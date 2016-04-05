@@ -28,10 +28,19 @@ const DATA = {
   ]
 }
 
+var items = DATA.items.filter(item => (item.type === 'mexican')).sort((a,b) => {
+  if(a.name > b.name) { return 1; }
+  else if(a.name < b.name) { return -1; }
+  else { return 0; }
+}).map(item => {
+  return <li key={item.id}>{item.name}</li>;
+});
+
 function Menu() {
   return (
     <div>
-      Open the console, you have failing tests.
+      <h1>{DATA.title}</h1>
+      <ul>{items}</ul>
     </div>
   )
 }
